@@ -554,6 +554,14 @@ static int crowd_request(const request_rec *r, const crowd_config *config, bool 
             case HTTP_OK:
             case HTTP_CREATED:
                 break;
+            case HTTP_FORBIDDEN:
+                /* Correct username/password but wrong group -
+                 * @see https://jira.atlassian.com/browse/CWD-2626 */
+                ap_log_rerror(APLOG_MARK, APLOG_INFO, 0, r,
+                    "User does not have access to application '%s' at %s'.",
+                    config->crowd_app_name, url);
+                success = false;
+                break;
             case HTTP_UNAUTHORIZED:
                 ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
                     "Application failed to authenticate as '%s' to Crowd at '%s'.",
