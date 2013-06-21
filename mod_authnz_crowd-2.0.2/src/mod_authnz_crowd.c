@@ -371,7 +371,6 @@ static authn_status authn_crowd_check_password(request_rec *r, const char *user,
                     break;
                 default:
                     ap_log_rerror(APLOG_MARK, APLOG_CRIT, 0, r, "Crowd authentication failed due to system exception");
-                    return AUTH_GENERAL_ERROR;
             }
         }
     }

@@ -1,12 +1,12 @@
-%define name mod_crowd 
+%define name mod_authnz_crowd 
 %define version 2.0.2 
 %define release skybet.0.1
 
-Summary: mod_crowd
+Summary: mod_authnz_crowd
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{version}.tar.gz
+Source0: mod_authnz_crowd-%{version}.tar.gz
 License: Apache 2.0 
 Group: System Environment/Libraries
 Obsoletes: mod_crowd 
@@ -23,7 +23,7 @@ Crowd is designed to help you manage users and groups across multiple applicatio
 %clean
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n mod_authnz_crowd-%{version}
 rm -Rf %{buildroot}
 
 %pre

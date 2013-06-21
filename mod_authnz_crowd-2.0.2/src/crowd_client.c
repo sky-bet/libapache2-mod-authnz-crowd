@@ -554,6 +554,13 @@ static int crowd_request(const request_rec *r, const crowd_config *config, bool 
             case HTTP_OK:
             case HTTP_CREATED:
                 break;
+            case HTTP_NOT_FOUND:
+                /* User not found for some unknown bloody reason */
+                ap_log_rerror(APLOG_MARK, APLOG_INFO, 0, r,
+                    "User not found in application '%s' at %s - probably not in the correct group'.",
+                    config->crowd_app_name, url);
+                success = false;
+                break;
             case HTTP_FORBIDDEN:
                 /* Correct username/password but wrong group -
                  * @see https://jira.atlassian.com/browse/CWD-2626 */

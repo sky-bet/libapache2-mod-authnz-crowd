@@ -1,3 +1,12 @@
-Debian / Ubuntu package, for Apache Crowd Connector
+Debian / Ubuntu / CentOS 5.x package, for Apache Crowd Connector
 
 More information can be found at http://confluence.atlassian.com/display/CROWD/Installing+the+Crowd+Apache+Connector+on+Ubuntu+Linux
+
+To build rpm for CentOS 5.x
+
+tar cvzf mod_authnz_crowd-xxx.tar.gz mod_authnz_crowd-xxx
+cd mod_authnz_crowd-xxx.tar.gz {BUILDROOT}/SOURCES
+cp mod-authnz-crowd-xxx.spec {BUILDROOT}/SPECS
+
+cd {BUILDROOT}/SPECS
+rpmbuild -bb --clean mod-authnz-crowd-xxx.spec
